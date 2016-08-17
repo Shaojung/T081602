@@ -16,7 +16,7 @@ public class MyService extends Service {
     private Runnable showTime = new Runnable() {
         public void run() {
 // 顯示目前時間
-            Log.i("mylog", new Date().toString());
+            Log.i("MYB mylog", new Date().toString());
             handler.postDelayed(this, 1000);
         }
     };
