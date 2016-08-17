@@ -9,9 +9,9 @@ import android.util.Log;
 import java.util.Date;
 
 public class MyService extends Service {
+    boolean isOpen = false;
     public MyService() {
     }
-
     private Handler handler = new Handler();
     private Runnable showTime = new Runnable() {
         public void run() {
@@ -33,13 +33,18 @@ public class MyService extends Service {
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.i("mylog", "onStartCommand()");
-        handler.post(showTime);
+        Log.i("MYB mylog", "onStartCommand()");
+        if (isOpen == false)
+        {
+            handler.post(showTime);
+            isOpen = true;
+        }
+
         return Service.START_STICKY;
     }
     @Override
     public void onDestroy() {
-        Log.i("mylog", "onDestroy()");
+        Log.i("MYB mylog", "onDestroy()");
         handler.removeCallbacks(showTime);
         super.onDestroy();
     }
