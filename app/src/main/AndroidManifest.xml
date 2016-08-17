@@ -25,6 +25,11 @@
             android:name=".MyReceiver"
             android:enabled="true"
             android:exported="true">
+                <intent-filter android:priority="500">
+                    <action android:name="android.intent.action.SCREEN_ON"/>
+                    <action android:name="android.intent.action.SCREEN_OFF"/>
+                    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+                </intent-filter>
         </receiver>
     </application>
 
